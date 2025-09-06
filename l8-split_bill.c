@@ -8,15 +8,15 @@
 #include <stdio.h>
 
 int main() {
-    int subtotal, orang, split_bill_bulat;
-    float split_bill;
+    int subtotal, orang;
 
     printf("Masukan subtotal dan jumlah orang : ");
-    scanf("%d %d", &subtotal, &orang);
+    if (scanf("%d %d", &subtotal, &orang) != 2) {puts("Input tidak valid"); return 1; }\
+    if (orang <= 0) {puts("Jumlah orang harus > 0"); return 1; }
 
-    float total = (float)subtotal + (0.05 * subtotal);
-    split_bill = total / orang;
-    split_bill_bulat = ceil(split_bill);
+    double total = subtotal * 1.05;
+    double per = total / orang;
+    int per_bulat = (int)ceil(per);
 
-    printf("Hasil perhitungan split bill perorang membayar : Rp. %d", split_bill_bulat);
+    printf("Setiap orang membayar : Rp. %d\n", per_bulat);
 }
