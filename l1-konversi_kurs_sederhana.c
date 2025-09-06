@@ -6,14 +6,22 @@
 #include <stdio.h>
 
 int main() {
-    long rupiah;
+    unsigned long rupiah;
 
     // kurs usd saat ini = 16.462,00
-    float kurs_usd = 16462;
+    const double kurs_usd = 16462.0;
 
     printf("Masukan Rupiah : ");
-    scanf("%ld", &rupiah);
+    if (scanf("%ld", &rupiah) != 1) {
+        puts("Input tidak valid");
+        return 1;
+    }
 
-    float hasil_usd = (float) rupiah / kurs_usd;
-    printf("Hasil konversi Rp. %ld ke USD dengan kurs %.2f adalah %.2f USD", rupiah,kurs_usd, hasil_usd);
+    if (kurs_usd <= 0.0) {
+        puts("Kurs tidak valid");
+        return 1;
+    }
+
+    double usd = (double) rupiah / kurs_usd;
+    printf("Hasil konversi Rp. %lu ke USD (kurs %.2f) = %.2f USD\n", rupiah, kurs_usd, usd);
 }
