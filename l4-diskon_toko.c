@@ -8,10 +8,9 @@
 int main() {
     int total;
     printf("Masukan Total Belanja : ");
-    scanf("%d", &total);
+    if (scanf("%d", &total) != 1) {puts("Input tidak valid"); return 1; }
 
-    if (total >= 100000) {
-        total = total * 0.9;
-    }
+    total = (total >= 100000) ? total * 0.9 : total;
+
     printf("Total Yang harus anda bayar adalah : Rp. %d", total);
 }
