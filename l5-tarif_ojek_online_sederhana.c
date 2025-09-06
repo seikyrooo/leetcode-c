@@ -8,13 +8,13 @@
 
 int main() {
     int biaya_awal, biaya_per_km;
-    float jarak_km, total;
+    float jarak_km;
 
     printf("Masukan Biaya awal, biaya per km dan jarak km : ");
-    scanf("%d %d %f", &biaya_awal, &biaya_per_km, &jarak_km);
+    if (scanf("%d %d %f", &biaya_awal, &biaya_per_km, &jarak_km) != 3) {puts("Input tidak valid"); return 1; }
 
-    total = biaya_awal + biaya_per_km * jarak_km;
-    int total_bulat = ceil(total);
+    double total = biaya_awal + biaya_per_km * jarak_km;
+    int total_bulat = (int)ceil(total);
 
     printf("Total Harga adalah : Rp. %d", total_bulat);
 
