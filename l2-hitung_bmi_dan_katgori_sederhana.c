@@ -12,28 +12,25 @@
 
 
 int main () {
-    float berat_kg, tinggi_cm, tinggi_m, bmi;
-    char status[20];
+    double berat_kg, tinggi_cm;
 
     printf("Masukan Berat Badan Anda (KG) : ");
-    scanf("%f", &berat_kg);
+    if (scanf("%lf", &berat_kg) != 1) {puts("Input tidak valid"); return 1; }
 
     printf("Masukan Tinggi Badan Anda (CM) : ");
-    scanf("%f", &tinggi_cm);
+    if (scanf("%lf", &tinggi_cm)!= 1){puts("Input tidak valid"); return 1; }
 
-    tinggi_m = (float)tinggi_cm / 100;
-    bmi = (float)berat_kg / (tinggi_m * tinggi_m);
+    double tinggi_m = tinggi_cm / 100.0;
+    if (tinggi_m <= 0) {puts("Tinggi tidak boleh nol/negatif"); return 1; }
 
+    double bmi = berat_kg / (tinggi_m * tinggi_m);
 
-    if (bmi < 18.5) {
-        strcpy(status, "Kurus");
-    }else if (bmi <= 24.9) {
-        strcpy(status, "Normal");
-    } else {
-        strcpy(status, "Gemuk");
-    }
+    const char *status;
+    if (bmi < 18.5)  status = "Kurus";
+    else if (bmi <= 24.9) status = "Normal";
+    else status = "Gemuk";
 
-    printf("Skor BMI Anda adalah %.2f, dengan Status %s", bmi, status);
+    printf("Skor BMI Anda = %.2f (%s)\n", bmi, status);
 
     return 0;
 }
