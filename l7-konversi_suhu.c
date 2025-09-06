@@ -6,13 +6,13 @@
 #include <stdio.h>
 
 int main() {
-    float c, f, k;
+    double c;
 
     printf("Masukan Suhu Celcius : ");
-    scanf("%f", &c);
+    if (scanf("%lf", &c) != 1) {puts("Input tidak valid"); return 1; }
 
-    f = (9.0/5.0) * c + 32;
-    k = c + 273.15;
+    double f = (9.0/5.0) * c + 32;
+    double k = c + 273.15;
 
     printf("Hasil konversi Suhu %.2f C adalah:\nFahrenheit : %.2f\nKelvin : %.2f", c, f, k);
 }
